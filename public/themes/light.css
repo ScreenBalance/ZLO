@@ -1,0 +1,19 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .responsive-button {
+    background-color: #F4F4F4;
+    color: #5D5D5D;
+    font-size: 2.5vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    padding: 1.5vh 4vw;
+    border-radius: 6vw;
+    border: none;
+    cursor: pointer;
+    max-width: 80vw;
+    min-width: 150px;
+  }
+  

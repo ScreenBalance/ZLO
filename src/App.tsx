@@ -1,10 +1,11 @@
+// src/App.tsx
 import React, { useEffect, useState } from 'react';
-import logo from './assets/zello-logo.svg';
-import whiteLogo from './assets/zello-logo-white.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import LanguageSelection from './pages/LanguageSelection';
+import Grid from './pages/Grid';
 
 const App = () => {
-  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -23,23 +24,17 @@ const App = () => {
     return () => darkModeMediaQuery.removeEventListener('change', handleThemeChange);
   }, []);
 
-  useEffect(() => {
-    const updateHeight = () => setViewportHeight(window.innerHeight);
-    window.addEventListener('resize', updateHeight);
-
-    return () => window.removeEventListener('resize', updateHeight);
-  }, []);
-
   return (
-    <div className="app-container" style={{ height: viewportHeight }}>
-      {/* Conditionally render logo based on theme */}
-      <img src={isDarkMode ? whiteLogo : logo} alt="Zello Logo" className="logo" />
-
-      {/* Responsive Button */}
-      <button className="responsive-button">
-        Let’s zlo down
-      </button>
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage isDarkMode={isDarkMode} />} />
+      <Route
+        path="/language-selection"
+        element={<LanguageSelection isDarkMode={isDarkMode} />}
+      />
+      {/* Pass isDarkMode to Grid */}
+      <Route path="/grid" element={<Grid isDarkMode={isDarkMode} />} />
+      {/* Add more routes here as needed */}
+    </Routes>
   );
 };
 

@@ -3,17 +3,25 @@ body {
     color: #202020;
   }
   
+ /* Default (for desktop) */
+.responsive-button {
+  background-color: #2F2F2F;
+  color: #ffffff;
+  font-size: 1.5vw; /* Suitable for larger screens */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding: 1.5vh 4vw;
+  border-radius: 5vw;
+  border: none;
+  cursor: pointer;
+  max-width: 80vw;
+  min-width: 150px;
+}
+
+/* Mobile adjustment */
+@media (max-width: 767px) {
   .responsive-button {
-    background-color: #2F2F2F;
-    color: #ffffff;
-    font-size: 2.5vw;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    padding: 1.5vh 4vw;
-    border-radius: 6vw;
-    border: none;
-    cursor: pointer;
-    max-width: 80vw;
-    min-width: 150px;
+    font-size: 4vw; /* Larger font size for mobile readability */
+    padding: 2vh 9vw; /* Increased padding for a larger button */
   }
-  
+}

@@ -4,17 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 
+// Function to set the theme-color meta tag
 const setThemeColorMetaTag = (color: string) => {
-  // Specify type as HTMLMetaElement
   let themeColorMetaTag = document.querySelector("meta[name='theme-color']") as HTMLMetaElement;
-  
+
   if (!themeColorMetaTag) {
     themeColorMetaTag = document.createElement('meta') as HTMLMetaElement;
     themeColorMetaTag.name = 'theme-color';
     document.head.appendChild(themeColorMetaTag);
   }
-  
+
   themeColorMetaTag.setAttribute('content', color);
 };
 
@@ -34,7 +35,7 @@ const loadTheme = () => {
   if (existingLink) {
     document.head.removeChild(existingLink);
   }
-  
+
   document.head.appendChild(link);
 };
 
@@ -42,13 +43,18 @@ const loadTheme = () => {
 loadTheme();
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', loadTheme);
 
+// Get the root element
+const rootElement = document.getElementById('root') as HTMLElement;
+
+// Create the root
+const root = ReactDOM.createRoot(rootElement);
+
 // Render the React app
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

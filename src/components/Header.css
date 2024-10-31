@@ -1,0 +1,45 @@
+/* src/components/Header.css */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin: 0;
+  height: calc(var(--vh, 1vh) * 10);
+}
+
+.logo-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.75em;
+  margin: 0;
+  font-weight: 400;
+  padding-left: 1rem;
+  color: #5D5D5D; /* Light mode color */
+}
+
+.back-button {
+  position: absolute;
+  left: 1rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.back-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .logo-text {
+    color: #B4B4B4; /* Dark mode color */
+  }
+}

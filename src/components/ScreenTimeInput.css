@@ -1,0 +1,78 @@
+/* src/components/ScreenTimeInput.css */
+
+/* Container to align input and button similar to AgeInput */
+.screen-time-input-step {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Remove margins from the action button inside screen-time-input-step */
+  .screen-time-input-step .action-button {
+    margin-bottom: 0;
+    margin-left: 0;
+    align-self: center;
+  }
+  
+  /* Reuse thin-text class for consistency */
+  .thin-text {
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-right: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  /* Styling the select field to match AgeInput's select styling */
+  .screen-time-select {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    padding-right: 2.5rem;
+  }
+  
+  .screen-time-select:focus {
+    outline: none;
+  }
+  
+  .screen-time-select.light-mode {
+    background-color: #F4F4F4;
+    color: #5D5D5D;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' fill='%235D5D5D' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
+  }
+  
+  .screen-time-select.dark-mode {
+    background-color: #2F2F2F;
+    color: #B4B4B4;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' fill='%23B4B4B4' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
+  }
+  
+  .screen-time-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+  }
+  
+  /* Hide the dropdown arrow in IE */
+  .screen-time-select::-ms-expand {
+    display: none;
+  }
+  
+  /* Styling for error messages */
+  .screen-time-input-step .error {
+    color: red;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Remove any additional button styles that might interfere */
+  /* Ensure no styles are targeting .screen-time-input button */
+  

@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
@@ -7,6 +6,7 @@ import Grid from './pages/Grid';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'no'>('en'); // Default to English
 
   useEffect(() => {
     // Set initial theme based on OS preference
@@ -29,10 +29,10 @@ const App = () => {
       <Route path="/" element={<LandingPage isDarkMode={isDarkMode} />} />
       <Route
         path="/language-selection"
-        element={<LanguageSelection isDarkMode={isDarkMode} />}
+        element={<LanguageSelection isDarkMode={isDarkMode} onSelectLanguage={setLanguage} />}
       />
-      {/* Pass isDarkMode to Grid */}
-      <Route path="/grid" element={<Grid isDarkMode={isDarkMode} />} />
+      {/* Pass isDarkMode and language to Grid */}
+      <Route path="/grid" element={<Grid isDarkMode={isDarkMode} language={language} />} />
       {/* Add more routes here as needed */}
     </Routes>
   );

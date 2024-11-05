@@ -1,27 +1,12 @@
-/* src/pages/Grid.css */
 
-:root {
-  --circle-initial-color: #5D5D5D;
-  --circle-animation-color: #F4F4F4;
-  --about-to-remove-color: #5D5D5D;
-  --text-color: #000000;
-  --button-bg-color: #F4F4F4;
-}
 
-.dark-mode {
-  --circle-initial-color: #B4B4B4;
-  --circle-animation-color: #2F2F2F;
-  --about-to-remove-color: #5D5D5D;
-  --text-color: #FFFFFF;
-  --button-bg-color: #2F2F2F;
-}
-
-/* Scope all selectors to .grid-page */
-
+/* Overall Page Layout */
 .grid-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
 }
 
 .grid-page .content {
@@ -29,157 +14,101 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 1200px;
   padding: 1rem;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Fixed height for header space to ensure visibility */
+.grid-page .header-container {
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .grid-page .text-container {
-  min-height: 3rem; /* Reserve space for the text to prevent shifting */
+  min-height: 3rem;
+  height: 4rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  /* Reserve space to prevent jumping */
-  height: 4rem; /* Adjust as needed */
+  justify-content: center;
 }
 
-.grid-page .display-text {
-  font-family: 'Poppins', sans-serif;
+/* Adjust circle grid for better spacing */
+.grid-page .circle-grid {
+  min-height: 18rem; /* Reduce height to fit content better */
+  display: grid;
+  gap: 3px;
+  justify-content: center;
+  align-content: center;
+  margin-top: 1rem;
+}
+
+.grid-page .footer-container {
+  min-height: 3rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .grid-page .display-text {
+    font-size: 1.2rem;
+  }
+  .circle-grid {
+    gap: 2px;
+  }
+  .circle {
+    width: 8px;
+    height: 8px;
+  }
+}
+/* Grid.css */
+
+.counter {
   font-size: 1.5rem;
+  color: var(--text-color);
   margin-bottom: 1rem;
-  display: inline-block;
+  margin-left: 0rem;
+  text-align: center;
+}
+
+
+/* Footer flex container */
+.footer-flex-container {
+  display: flex;
+  align-items: baseline; /* Align items based on their text baseline */
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Adjust the text */
+.footer-flex-container .thin-text {
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1;
+  margin-top: 1rem; /* Move text up slightly */
+  margin-right: 0.5rem;
   color: var(--text-color);
 }
 
-.grid-page .age-input-step {
-  display: flex;
-  align-items: center; /* Align items horizontally */
-  gap: 1rem;
-  color: var(--text-color); /* Adjust text color based on mode */
+/* Ensure the button aligns properly */
+.footer-flex-container .action-button {
+  align-self: center;
 }
 
-.grid-page .age-label {
-  font-family: 'Poppins', sans-serif;
-}
-
-.grid-page .age-select {
-  font-size: 1rem;
-  padding: 0.5rem;
-}
-
-.grid-page .next-button {
-  background-color: var(--button-bg-color);
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.grid-page .next-button-image {
-  width: 24px; /* Adjust size as needed */
-  height: 24px;
-  transform: rotate(180deg); /* Rotate the SVG 180 degrees */
-}
-
-.grid-page .button-container {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  /* Reserve space to prevent jumping */
-  height: 3rem; /* Adjust as needed */
-}
-
-.grid-page .circle-grid {
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  gap: 4px;
-  margin-top: 1rem;
-}
-
-.grid-page .circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--circle-initial-color);
-}
-
-.grid-page .post-animation .circle:not(.about-to-remove):not(.reverse-color-animation) {
-  background-color: var(--circle-animation-color);
-}
-
-/* Increased specificity for about-to-remove class */
-.grid-page .circle-grid .circle.about-to-remove {
-  background-color: var(--about-to-remove-color) !important;
-}
-
-/* Reverse coloring animation */
-.grid-page .reverse-color-animation {
-  animation: reverseColorAnimation 0.5s forwards;
-  animation-delay: calc((1080 - var(--i)) * 0.0033s); /* Reverse the animation order */
-}
-
-@keyframes reverseColorAnimation {
-  to {
-    background-color: var(--circle-animation-color);
-  }
-}
-
-.grid-page .initial-wave .circle {
-  opacity: 0;
-  transform: scale(0);
-  animation: waveAnimation 0.5s forwards;
-  animation-delay: calc(var(--i) * 0.0013s);
-}
-
-.grid-page .second-animation .circle {
-  animation: waveAnimation2 0.5s forwards;
-  animation-delay: calc(var(--i) * 0.0013s);
-}
-
-@keyframes waveAnimation {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes waveAnimation2 {
-  to {
-    transform: scale(1.2);
-    background-color: var(--circle-animation-color);
-  }
-}
-
-/* Animation for removing circles */
-.grid-page .hidden-circle {
-  animation: fadeOutCircle 0.67s forwards;
-  animation-delay: calc((1080 - var(--i)) * 0.0033s); /* Reverse the removal order */
-}
-
-@keyframes fadeOutCircle {
-  to {
-    opacity: 0;
-    transform: scale(0);
-  }
-}
-
-/* Fade-in and Fade-out Animations */
-.grid-page .fade-in {
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-}
-
-.grid-page .fade-out {
-  opacity: 1;
-  animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+/* Fade-out animation for colored circles */
+.fade-out {
+  animation: fadeOut 2s forwards;
 }
 
 @keyframes fadeOut {
@@ -188,18 +117,13 @@
   }
 }
 
-/* Adjust circle size and grid gap for smaller screens */
-@media (max-width: 600px) {
-  .grid-page .circle {
-    width: 8px;
-    height: 8px;
-  }
-  .grid-page .circle-grid {
-    gap: 2px;
-  }
-  .grid-page .display-text {
-    font-size: 1.2rem;
-  }
+/* Centering animation for remaining circles */
+.centered {
+  animation: moveToCenter 2s forwards;
 }
 
-/* Additional styles if needed */
+@keyframes moveToCenter {
+  to {
+    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+  }
+}

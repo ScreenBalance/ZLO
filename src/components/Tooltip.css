@@ -1,0 +1,64 @@
+.tooltip-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+  
+.tooltip-box {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+  
+.tooltip-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+  
+/* Tooltip dot styling */
+.tooltip-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+  
+/* Color classes for each phase */
+.sleep-circle {
+    background-color: blue;
+}
+  
+.career-circle {
+    background-color: orange;
+}
+  
+.cooking-circle {
+    background-color: red;
+}
+  
+.chores-circle {
+    background-color: yellow;
+}
+  
+.transport-circle {
+    background-color: green;
+}
+  
+.hygiene-circle {
+    background-color: lightblue;
+}
+.screenTime-circle {
+    background-color: black;
+  }  
+  
+.remaining-circle {
+    background-color: grey;
+}

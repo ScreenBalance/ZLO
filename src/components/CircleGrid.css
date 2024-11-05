@@ -1,0 +1,113 @@
+/* Root Variables */
+:root {
+    --circle-initial-color: #5D5D5D;
+    --circle-animation-color: #F4F4F4;
+    --about-to-remove-color: #5D5D5D;
+    --text-color: #000000;
+    --button-bg-color: #F4F4F4;
+  }
+  
+  .dark-mode {
+    --circle-initial-color: #B4B4B4;
+    --circle-animation-color: #2F2F2F;
+    --about-to-remove-color: #5D5D5D;
+    --text-color: #FFFFFF;
+    --button-bg-color: #2F2F2F;
+  }
+  
+  /* Circle styles */
+  .circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--circle-initial-color);
+    transition: background-color 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  /* Initial wave animation from bottom to top */
+  .initial-wave .circle {
+    opacity: 0;
+    transform: scale(0);
+    animation: initialWaveAnimation 0.5s forwards;
+    animation-delay: calc((1080 - var(--i)) * 0.0013s); /* Bottom to top */
+  }
+  
+  /* Second wave with delay for recoloring */
+  .second-wave .circle {
+    background-color: var(--circle-animation-color);
+    transition-delay: calc(var(--i) * 0.0013s + 3s); /* Add 3s delay before recolor */
+  }
+  
+  /* Persistent color after second wave */
+  .persistent-color .circle {
+    background-color: var(--circle-animation-color);
+  }
+  
+  /* Removal animation for circles based on age */
+  .about-to-remove {
+    animation: removalWaveAnimation 0.5s forwards;
+    animation-delay: calc((1080 - var(--i)) * 0.0013s); /* Bottom to top */
+  }
+  
+  /* Keyframes for initial wave animation */
+  @keyframes initialWaveAnimation {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Keyframes for removal animation */
+  @keyframes removalWaveAnimation {
+    to {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+  
+  /* Ensure hidden circles stay hidden */
+  .hidden-circle {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  /* Phases */
+  .circle.sleep {
+    background-color: #0000FF; /* Blue color for sleep */
+  }
+  
+  /* Animation for coloring circles */
+  .about-to-color {
+    animation: colorWaveAnimation 0.5s forwards;
+    animation-delay: calc(var(--i) * 0.0013s);
+  }
+  
+  @keyframes colorWaveAnimation {
+    to {
+      background-color: #0000FF; /* Blue color for sleep */
+    }
+  }
+  .circle.career {
+    background-color: orange;
+  }
+  
+  .circle.cooking {
+    background-color: red;
+  }
+  
+  .circle.chores {
+    background-color: yellow;
+  }
+  
+  .circle.transport {
+    background-color: green;
+  }
+  
+  .circle.hygiene {
+    background-color: lightblue;
+  }
+  .circle.screenTime {
+    background-color: black;
+  }
+  
+  
